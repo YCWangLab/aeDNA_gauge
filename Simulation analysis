@@ -1,0 +1,30 @@
+#####the analysis based on a per-sequence
+
+cd work_dic/lca/new/
+
+for file in *.lca
+do
+  bname=$(basename "$file" | cut -d"." -f1-2)
+  
+  grep ":v_DEAM" $file | cut -d":" -f1-7 >> 1.txt 
+  grep ":v_DEAM" $file | awk -F "\t" '{print $2}' >> 2.txt
+  paste -d* 1.txt 2.txt | sed 's/*/\t/g' >> $file.table.txt
+  rm 1.txt 2.txt
+
+  grep -v ":v_DEAM" $file | awk -F "\t" '$1 ~ /:v/ {print $1"\t"$2}' | cut -d":" -f1-6 | sed 's/\t$//' >> 1.txt
+  grep -v ":v_DEAM" $file | awk -F "\t" '$1 ~ /:v/ {print $1"\t"$2}' | awk -F "\t" '{print $2}' >> 2.txt
+  paste -d* 1.txt 2.txt | sed 's/*/\t/g' >> $file.table.txt
+  rm 1.txt 2.txt
+
+  grep -v ":v_DEAM" $file | awk -F "\t" '!($1 ~ /:v/) {print $1"\t"$2}' | grep "_DEAM" | cut -d":" -f1-6 >> 1.txt 
+  grep -v ":v_DEAM" $file | awk -F "\t" '!($1 ~ /:v/) {print $1"\t"$2}' | grep "_DEAM" | awk -F "\t" '{print $2}' >> 2.txt
+  paste -d* 1.txt 2.txt | sed 's/*/\t/g' >> $file.table.txt
+  rm 1.txt 2.txt
+
+
+  sed '1d' $file | grep -v ":v_DEAM" | awk -F "\t" '!($1 ~ /:v/) {print $1"\t"$2}' | grep -v "_DEAM" | cut -d":" -f1-5 >> 1.txt
+  sed '1d' $file | grep -v ":v_DEAM" | awk -F "\t" '!($1 ~ /:v/) {print $1"\t"$2}' | grep -v "_DEAM" | awk -F "\t" '{print $2}' >> 2.txt
+  paste -d* 1.txt 2.txt | sed 's/*/\t/g' >> $file.table.txt
+  rm 1.txt 2.txt
+  
+done
