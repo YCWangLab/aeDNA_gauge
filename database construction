@@ -154,12 +154,12 @@ do
     for file in work_folder/genome/originalgenome/latest/*.fna	
     do
         b=`sed -n ${c}p work_folder/result/sample/modern/$a.txt`
-	      echo $b >> $a.txt
+        echo $b >> $a.txt
         gargammel/src/fragSim --seed $a -n $b -f work_folder/length/new/young_len_dis.txt -o $bname.fa.gz $file
-	      gzip -d $bname.fa.gz
-	      cat $bname.fa >> $a.fa
-	      rm $bname.fa
-	      let "c++"
+	gzip -d $bname.fa.gz
+	cat $bname.fa >> $a.fa
+	rm $bname.fa
+	let "c++"
     done
   let "a++"
 done
@@ -216,7 +216,7 @@ do
   let "a++"
 done
 
-#mutation
+#simulate random mutations with Mutation-Simulator (0.0001 for Micro, 0.00001 for Macro and 0.0002 for Organelle reads)
 cd work_folder/result/sample/young/mutation
 for file in work_folder/result/sample/young/*.fa
 do
@@ -233,8 +233,8 @@ do
   rm acession.txt $bname.variation.fa $bname.invariation.fa $bname.header.txt $bname.seq.fa $bname.mutation.fa $bname.simulation.fa $bname.fa $bname.vcf $bname.seq.fa.fai
 done
 
-cd /home/bgp407/simulation/result/sample/young/macro/mutation
-for file in /home/bgp407/simulation/result/sample/young/macro/*.animal.fa
+cd work_folder/result/sample/young/macro/mutation
+for file in work_folder/result/sample/young/macro/*.animal.fa
 do
   bname=`basename $file | cut -d. -f1-2`
   grep '>' $file >> $bname.header.txt
@@ -249,7 +249,7 @@ do
   rm acession.txt $bname.variation.fa $bname.invariation.fa $bname.header.txt $bname.seq.fa $bname.mutation.fa $bname.simulation.fa $bname.fa $bname.vcf $bname.seq.fa.fai
 done
 
-for file in /home/bgp407/simulation/result/sample/young/macro/*.plant.fa
+for file in work_folder/result/sample/young/macro/*.plant.fa
 do
   bname=`basename $file | cut -d. -f1-2`
   grep '>' $file >> $bname.header.txt
@@ -264,8 +264,8 @@ do
   rm acession.txt $bname.variation.fa $bname.invariation.fa $bname.header.txt $bname.seq.fa $bname.mutation.fa $bname.simulation.fa $bname.fa $bname.vcf $bname.seq.fa.fai
 done
 
-cd /home/bgp407/simulation/result/sample/young/macro/mutation
-for file in /home/bgp407/simulation/result/sample/young/macro/*.mit.fa
+cd work_folder/result/sample/young/macro/mutation
+for file in work_folder/result/sample/young/macro/*.mit.fa
 do
   bname=`basename $file | cut -d. -f1-3`
   grep '>' $file >> $bname.header.txt
@@ -280,8 +280,8 @@ do
   rm acession.txt $bname.variation.fa $bname.invariation.fa $bname.header.txt $bname.seq.fa $bname.mutation.fa $bname.simulation.fa $bname.fa $bname.vcf $bname.seq.fa.fai
 done
 
-cd /home/bgp407/simulation/result/sample/young/macro/mutation
-for file in /home/bgp407/simulation/result/sample/young/macro/*.chlo.fa
+cd work_folder/result/sample/young/macro/mutation
+for file in work_folder/result/sample/young/macro/*.chlo.fa
 do
   bname=`basename $file | cut -d. -f1-3`
   grep '>' $file >> $bname.header.txt
@@ -295,4 +295,41 @@ do
   cat $bname.variation.fa $bname.invariation.fa >> $bname.sample.fa
   rm acession.txt $bname.variation.fa $bname.invariation.fa $bname.header.txt $bname.seq.fa $bname.mutation.fa $bname.simulation.fa $bname.fa $bname.vcf $bname.seq.fa.fai
 done
+
+#merge
+a=1
+while(($a<=30))
+do
+    cat work_folder/result/sample/young/mutation/$a.*.fa work_folder/result/sample/young/macro/mutation/$a.*.fa >> $a.fa
+    let "a++"
+done
+
+#damage
+for file in work_folder/result/sample/young/sample/*.fa
+do
+    bname=`basename $file`
+    gargammel/src/deamSim -o $bname.gz -name -mapdamage work_folder/mapdamage/data/youngdata/results_cut/misincorporation.txt double $file
+    gzip -d $bname.gz
+done
+
+# fa to fq
+bbmap/reformat.sh in=simulation_d.fa out1=$bname.simulation.fq qfake=40
+
+
+####old sample
+#fragmentation (Apart from the old_len_dis.txt file, the rest are the same as the yong sample)
+#mutation (0.001 for Micro, 0.0001 for Macro and 0.002 for Organelle reads)
+#merge
+#damage (Apart from the misincorporation.txt file, the rest are the same as the yong sample)
+# fa to fq
+
+####deep time sample
+#fragmentation (Apart from the veryold_len_dis.txt file, the rest are the same as the yong sample)
+#mutation (0.04 for Micro, 0.004 for Macro and 0.08 for Organelle reads)
+#merge
+#damage (Apart from the misincorporation.txt file, the rest are the same as the yong sample)
+# fa to fq
+
+
+
 
