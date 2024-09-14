@@ -1,0 +1,2 @@
+The simulated datasets comprehensively incorporate the inherent characteristics of both ancient DNA (aDNA) and environmental DNA (eDNA) to the greatest extent possible. Therefore, the datasets consist of computationally simulated reads from 600 randomly selected metagenomes with varying levels of damage simulating deamination, fragmentation, and variation, where the taxa and their abundances are known. 
+The simulated dataset is available at https://figshare.com/account/items/27020329/edit.
