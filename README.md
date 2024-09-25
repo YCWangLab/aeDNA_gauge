@@ -11,13 +11,15 @@ Similarly, in a plant cell, there are on average about 100 copies of the mitocho
 
 We simulated modern, young, old, and deep time periods, corresponding to the nowadays, approximately 1,000 BP (before present), 10,000 BP, and 40,000 BP, respectively. To simulate aDNA fragmentation and damage, we utilized three previously published samples of the ancient archaeological specimens to obtain the reads length and deamination profiles used as input parameters for the simulation. The Yana_young (766 BP), Yana_old (31,630 BP), and femur fragment (~430,000 BP) individuals were selected as representatives for the young, old, and deep time periods respectively (see Table 1). For the modern simulated database, the sequence lengths were set between 302–305 bp, with no deamination.
 
+![image](https://github.com/YCWangLab/aeDNA_gauge/blob/main/Table%201%20Metagenomic%20backgrounds%20used%20for%20simulated%20data%20sets.png)
+
 Fragmentation and damage previously published samples of the ancient archaeological specimens to obtain the reads length and deamination profiles used as input parameters for the simulation:
 ![image](https://github.com/YCWangLab/aeDNA_gauge/blob/main/Fragmentation%20and%20damage%20previously%20published%20samples%20of%20the%20ancient%20archaeological%20specimens%20to%20obtain%20the%20reads%20length%20and%20deamination%20profiles%20used%20as%20input%20parameters%20for%20the%20simulation.png)
 
 
-![image](https://github.com/YCWangLab/aeDNA_gauge/blob/main/Table%201%20Metagenomic%20backgrounds%20used%20for%20simulated%20data%20sets.png)
-
 Mutation rates differ across species and DNA sources; in general, microbial and organelle genomes tend to be shorter with higher mutation rates, whereas animal and plant nuclear genomes have lower mutation rates. Based on current published studies, we set different mutation rates for microbial, plant, animal, and organelle genomes across different time periods, as detailed in Table 2.
+
+![image](https://github.com/YCWangLab/aeDNA_gauge/blob/main/Table%202%20The%20mutation%20rates%20of%20genomes%20at%20different%20age.png)
 
 
 
