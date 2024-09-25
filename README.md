@@ -14,6 +14,7 @@ We simulated modern, young, old, and deep time periods, corresponding to the now
 ![image](https://github.com/YCWangLab/aeDNA_gauge/blob/main/Table%201%20Metagenomic%20backgrounds%20used%20for%20simulated%20data%20sets.png)
 
 Fragmentation and damage previously published samples of the ancient archaeological specimens to obtain the reads length and deamination profiles used as input parameters for the simulation:
+
 ![image](https://github.com/YCWangLab/aeDNA_gauge/blob/main/Fragmentation%20and%20damage%20previously%20published%20samples%20of%20the%20ancient%20archaeological%20specimens%20to%20obtain%20the%20reads%20length%20and%20deamination%20profiles%20used%20as%20input%20parameters%20for%20the%20simulation.png)
 
 
