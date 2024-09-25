@@ -1,6 +1,9 @@
 # aeDNA_gauge
 The working depository for a simulated ancient environmental DNA dataset (aeDNA gauge), for the methods and scripts, and deposition of the simulated data.
 
+
+![image](https://github.com/YCWangLab/aeDNA_gauge/blob/main/aeDNA%20gauge%20workflow%20overview.tif)
+
 Our simulated datasets comprehensively incorporate the inherent characteristics of both ancient DNA (aDNA) and environmental DNA (eDNA) to the greatest extent possible. Therefore, they consist of computationally simulated reads from 600 randomly selected metagenomes of different trophic level species with varying levels of damage simulating deamination, fragmentation, and divergence, where the taxa and their abundances are known. 
 First, considering that environmental samples are complex mixtures of organisms, with microbial DNA sequences making up the majority, we randomly downloaded full genome assemblies from NCBI RefSeq: 350 bacteria, 100 archaea, 50 fungi, 50 plants, 15 vertebrate mammals, 15 other vertebrates, and 20 invertebrates. Subsequently, considering the significant difference in the number of nuclear and organelle DNA copies in animal and plant cells, we used the most extensively studied species—Homo sapiens for animals and Arabidopsis thaliana for plants—as representatives to calculate the ratio of nuclear DNA to organelle DNA sequences in the simulated database. In a human cell, there are 2 copies of the nuclear genome and approximately 500 copies of the mitochondrial genome. The downloaded human nuclear genome contains 3,117,275,501 base pairs, and the mitochondrial genome contains 16,569 base pairs. From this, we calculated the ratio of nuclear DNA base pairs to mitochondrial DNA base pairs in a human cell to be 75:1. For simplicity, the ratio of nuclear DNA sequences to mitochondrial DNA sequences for animals in the simulated database was set to 100:1.
 
