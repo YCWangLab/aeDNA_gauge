@@ -15,21 +15,11 @@ Fragmentation and damage previously published samples of the ancient archaeologi
 ![image](https://github.com/YCWangLab/aeDNA_gauge/blob/main/Fragmentation%20and%20damage%20previously%20published%20samples%20of%20the%20ancient%20archaeological%20specimens%20to%20obtain%20the%20reads%20length%20and%20deamination%20profiles%20used%20as%20input%20parameters%20for%20the%20simulation.png)
 
 
-Table 1 Metagenomic backgrounds used for simulated data sets.
-Simulated age	Individua	Age (BP)	Source
-Modern	na	na	na
-Young	Yana_young	766	Sikora et al., 2019
-Old	Yana_old	31630	Sikora et al., 2019
-Deep age	femur fragment (AT-5431)	~430000	Meyer et al., 2016
+![image](https://github.com/YCWangLab/aeDNA_gauge/blob/main/Table%201%20Metagenomic%20backgrounds%20used%20for%20simulated%20data%20sets.png)
 
 Mutation rates differ across species and DNA sources; in general, microbial and organelle genomes tend to be shorter with higher mutation rates, whereas animal and plant nuclear genomes have lower mutation rates. Based on current published studies, we set different mutation rates for microbial, plant, animal, and organelle genomes across different time periods, as detailed in Table 2.
 
-Table 2 The mutation rates of genomes at different age.
-Simulated age	Micro	Macro	Organelle
-Modern	0	0	0
-Young	0.0001	0.00001	0.0002
-Old	0.001	0.0001	0.002
-Deep age	0.04	0.004	0.08
+
 
 We obtained 3 community from different time periods, resulting in a total of 12 datasets. The datasets were created using the following workflow (Figure 1). First, fragments from the different nuclear and organell genomes were produced uing FragSim module from Gargammel (Renaud et al., 2017).  Randomly selected 10 to 10,000 sequence fragments from each nuclear genome, along with the corresponding number of organelle sequence fragments, were combined to form a community. The abundance of each taxa in a metagenomic sample was set randomly with same abundance in each community (same -seed parameters in gargammel). Next, we simulated divergence by applying mutation- simulator (Kuhl et al., 2021) to add the appropriate mutation rates to genomes from different time periods based on the parameters in Table 2. Afterward, deamination damage of the reads for each time period were generated using DeamSim module from Gargammel. Finally, we combined the subsets into one FASTQ file as the simulated dataset. The simulated reads carry a unique identifier in their header with the information of the accession of the genome it originated from, the fragment length, mutation and the deamination damage. 
 The simulated dataset is available at https://figshare.com/account/items/27020329/edit.
